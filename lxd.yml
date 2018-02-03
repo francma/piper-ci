@@ -1,0 +1,38 @@
+lxd:
+  # see `lxc profile list`
+  profiles: [piper-ci]
+  # lxd server endpoint
+  endpoint: https://127.0.0.1:8443
+  # your generated certificate (see README.md:installation)
+  cert: ~/.config/lxc-client/client.crt
+  # your generated key (see README.md:installation)
+  key: ~/.config/lxc-client/client.key
+  # allow only trusted certificated?
+  verify: no
+
+runner:
+  # runner identifier (see your piper-core config)
+  token: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  # sleep at least for "x" second before making next request to your piper-core
+  interval: 2
+  # maximum number of concurrent jobs
+  instances: 1
+  # your piper-core address
+  endpoint: http://127.0.0.1:5000
+
+logging:
+  version: 1
+  disable_existing_loggers: yes
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: default
+      stream: ext://sys.stderr
+  formatters:
+    default:
+      format: "%(asctime)s - %(processName)s - %(levelname)s - %(message)s"
+      datefmt: '%Y-%m-%d %H:%M:%S'
+  loggers:
+    piper-lxd:
+      level: DEBUG
+      handlers: [console]
