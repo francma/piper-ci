@@ -16,7 +16,7 @@ runner:
   # sleep at least for "x" second before making next request to your piper-core
   interval: 2
   # maximum number of concurrent jobs
-  instances: 1
+  instances: 3 
   # your piper-core address
   endpoint: http://127.0.0.1:5000
 
