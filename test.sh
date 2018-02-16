@@ -47,3 +47,7 @@ curl -H "Content-Type: application/json" -X POST -d "@$PIPER_HOME/piper-ci/hook.
 # curl -H "Content-Type: application/json" -X POST -d "@$PIPER_HOME/piper-ci/hook.json" http://localhost:$PIPER_CORE_PORT/webhook
 cd -
 
+
+cd "$PIPER_HOME/piper-ci-driver"
+piper-shell "$PIPER_HOME/piper-ci/core.yml" 1
+cd -
